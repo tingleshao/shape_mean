@@ -50,7 +50,11 @@ for k = 1:11,
    elip2(k) = r3 * cos(t) + 1i *  r4 * sin(t);
 end
 figure;
-plot(elip1,'b')
-hold on;
-plot(elip2,'r')
+plot(elip1/norm(elip1),'b')
 
+hold on;
+plot(elip2/norm(elip2),'r')
+data = [elip1, elip2];
+mean = getMeanViaVWEmbedding(data)
+mean = mean/ norm(mean)
+plot(mean,'g')
