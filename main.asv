@@ -35,22 +35,8 @@ C_x  = C * X;
 % 2) test the extrinsic mean discrete version calculation via VW embedding 
 % test data: 2 ellipsoids X(t) = r1 cost, Y(t) = r2 sint
 elip1 = zeros(10,1);
-elip2 = zeros(10,1);
-
 r1 = 4;
 r2 = 3;
-r3 = 6;
-r4 = 2;
-for k = 1:11,
-   t = pi * 2 / 10 * k;
-   elip1(k) = r1 * cos(t) + 1i *  r2 * sin(t);
+for k = 1:10,
+   elip(k) = 
 end
-for k = 1:11,
-   t = pi * 2 / 10 * k;
-   elip2(k) = r3 * cos(t) + 1i *  r4 * sin(t);
-end
-figure;
-plot(elip1,'b')
-hold on;
-plot(elip2,'r')
-

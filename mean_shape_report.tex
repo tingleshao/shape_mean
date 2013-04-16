@@ -23,7 +23,9 @@
 \begin{document}
 
 
-\title{A Study of Shape Means}%
+\title{
+%COMP 766 Spring 2013 \\ Project Report %\\
+A Study of Shape Means}%
 \author{Chong Shao}%
 %\address{}%
 %\thanks{}%
@@ -36,6 +38,7 @@
 The first part of this paper discusses Stephen Huckemann's paper ``On the meaning of mean shape" discusses about three kinds of means: Intrinsic mean, extrinsic mean and residue mean. Each has a corresponding quotient mean: Intrinsic, Ziezold and Procrustean mean, respectively. \\[0.2cm]
 One important property that is presented in this paper is the stability of the three means: intrinsic and Ziezold means are stable while Procrustes means are generally not. Here stability means the little perturbation in samples would not make great changes in the population's sample mean. \\[0.2cm]
 The second part of this paper is a summation of Ellingson et. al.'s paper ``Nonparametric Estimation for Extrinsic Mean Shapes of Planar Contours". This paper describes one approach in computing mean for a population of nonparametric representation of 2D planar contours.
+\section{Kendall's shape space}
 \section{Definition of means}
 \section{Proof of stability}
 \section{1:3 Property}
@@ -63,10 +66,11 @@ missing something here..\\[0.2cm]
 Bhattacharya and Partrangenaru [8] note that the VW extrinsic mean is the Fr$\acute{e}$chet mean of $[X]$ for the distance $\mathbb{C}P^{k-2}$ induced by the Euclidean distance on $S(k-1, \mathbb{C})$ via $j_1$, given by 
 \[d_{j_1}([\xi_1],[\xi_2]) = ||\xi_1\xi_1^* - \xi_2\xi_2^*|| \text{ (distance definition)}\] 
 Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the space $S(k,\mathbb{C})$ of the selfadjoint $k\times k $ matrices using a similar VW embedding $j$ given by 
-\[j([\zeta])= \frac{1}{||\zeta||^2}\zeta\zeta^*\ \text{ (VW embedding discrete version)}]
+\[j([\zeta])= \frac{1}{||\zeta||^2}\zeta\zeta^*\ \text{ (VW embedding discrete version)}\]
+10. To understand it, first note that Kendall's work does not include definition of parameters of location and ?spread of such distributions.[2] Kent definds the full Procrustes estimate of a mean shape $\hat{\mu}$, and shows that for a given sample $[\zeta_1],\dots,[\zeta_n]$ of points on ? $\mathbb{C}P^{k-2}$, this estimate is $\mu = [m]$, where $m$ is a eigenvector corresponding to the largest eigenvalue of $\sum_{i=1}^n\frac{1}{||\zeta_i||^2}\zeta_i\zeta_i^* = \frac{1}{n}\sum_{i=1}^n j([\zeta_i])$, assuming eigenvalue is simple.\\[0.2cm]
+11. For nonparametric definition for similarity shape, there is no definition of mean in Kent. Ziezoid however defines the mean set of a random direct similarity shape $[U]$ of a \emph{k-ads}, regarded as a random point of $\mathbb{C}P^{k-2}$ as the Fr$\acute{e}$chet mean set of $[U]$ with respect to the ?Fubini-Study (FS) metric. \\[0.2cm]
+12. 
 \section{Experiments}
-
-
 \section{References}
 [1] Stephen Huckemann, ``On the Meaning of Mean Shape" \\[0.2cm]
 [2] Contour shape mean paper\\[0.2cm]
@@ -76,5 +80,5 @@ Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the s
 [6] The Statistics of shapes book on Steve's shelf\\[0.2cm]
 [7] Contour shape mean paper 2013 version \\[0.2cm]
 [8] ref [9] on paper [2]
+
 \end{document}
-% ----------------------------------------------------------------
