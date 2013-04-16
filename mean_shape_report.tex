@@ -39,6 +39,7 @@ The first part of this paper discusses Stephen Huckemann's paper ``On the meanin
 One important property that is presented in this paper is the stability of the three means: intrinsic and Ziezold means are stable while Procrustes means are generally not. Here stability means the little perturbation in samples would not make great changes in the population's sample mean. \\[0.2cm]
 The second part of this paper is a summation of Ellingson et. al.'s paper ``Nonparametric Estimation for Extrinsic Mean Shapes of Planar Contours". This paper describes one approach in computing mean for a population of nonparametric representation of 2D planar contours.
 \section{Kendall's shape space}
+
 \section{Definition of means}
 \section{Proof of stability}
 \section{1:3 Property}
@@ -62,14 +63,18 @@ $\kappa_1$ and $\kappa_2$ are the curvatures of $\gamma_1$ and $\gamma_2$ respec
 8. Finite representation of planar contours\\[0.2cm]
 We now switch to the finite representation of planar contours where a contour is represented by $k$ landmarks uniformly sampled. The starting point is chosen to be the point furthest from the center of gravity of that contour. \\[0.2cm]
 9. Therefore we need a discrete version of VW embedding. \\[0.2cm]
-missing something here..\\[0.2cm]
+missing something here..(insert point 12)\\[0.2cm]
 Bhattacharya and Partrangenaru [8] note that the VW extrinsic mean is the Fr$\acute{e}$chet mean of $[X]$ for the distance $\mathbb{C}P^{k-2}$ induced by the Euclidean distance on $S(k-1, \mathbb{C})$ via $j_1$, given by 
 \[d_{j_1}([\xi_1],[\xi_2]) = ||\xi_1\xi_1^* - \xi_2\xi_2^*|| \text{ (distance definition)}\] 
 Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the space $S(k,\mathbb{C})$ of the selfadjoint $k\times k $ matrices using a similar VW embedding $j$ given by 
 \[j([\zeta])= \frac{1}{||\zeta||^2}\zeta\zeta^*\ \text{ (VW embedding discrete version)}\]
 10. To understand it, first note that Kendall's work does not include definition of parameters of location and ?spread of such distributions.[2] Kent definds the full Procrustes estimate of a mean shape $\hat{\mu}$, and shows that for a given sample $[\zeta_1],\dots,[\zeta_n]$ of points on ? $\mathbb{C}P^{k-2}$, this estimate is $\mu = [m]$, where $m$ is a eigenvector corresponding to the largest eigenvalue of $\sum_{i=1}^n\frac{1}{||\zeta_i||^2}\zeta_i\zeta_i^* = \frac{1}{n}\sum_{i=1}^n j([\zeta_i])$, assuming eigenvalue is simple.\\[0.2cm]
 11. For nonparametric definition for similarity shape, there is no definition of mean in Kent. Ziezoid however defines the mean set of a random direct similarity shape $[U]$ of a \emph{k-ads}, regarded as a random point of $\mathbb{C}P^{k-2}$ as the Fr$\acute{e}$chet mean set of $[U]$ with respect to the ?Fubini-Study (FS) metric. \\[0.2cm]
-12. 
+12. Patrangenaru defines the VW extrinsic mean $\mu_{j1}$ of a random point $[X]$ in terms of the VW embedding $j_1$ of $\mathbb{C}P^{k-2}$ into the space $S(k-1,\mathbb{C})$ of selfadjoint $(k-1) \times (k-1)$ matrices is given by 
+\[j_1([\xi]) = \frac{1}{||\xi||^2}\xi\xi^*\]
+as projection of the mean of $j_1[X]$ on $j_1(\mathbb{C}P^{k-2})$, and shows that $\mu_{j1}$ exists if $[X]$ the largest eigenvalue of $E(XX^*)$ is simple, and in this case $\mu_{j_1} = [\mu]$, where $\mu$ is an eigenvector corresponding to the largest eigenvalue of $E(XX^*)$ \\[0.2cm]
+13. The two VW embeddings are related by  ?(What is K?)
+\[j_1([\xi]) = Kj([\zeta])K^T\]
 \section{Experiments}
 \section{References}
 [1] Stephen Huckemann, ``On the Meaning of Mean Shape" \\[0.2cm]
