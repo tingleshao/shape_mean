@@ -39,7 +39,7 @@ The first part of this paper discusses Stephen Huckemann's paper ``On the meanin
 One important property that is presented in this paper is the stability of the three means: intrinsic and Ziezold means are stable while Procrustes means are generally not. Here stability means the little perturbation in samples would not make great changes in the population's sample mean. \\[0.2cm]
 The second part of this paper is a summation of Ellingson et. al.'s paper ``Nonparametric Estimation for Extrinsic Mean Shapes of Planar Contours". This paper describes one approach in computing mean for a population of nonparametric representation of 2D planar contours.
 \section{Kendall's shape space}
-
+Kendall's shape space is ... 
 \section{Definition of means}
 \section{Proof of stability}
 \section{1:3 Property}
@@ -47,9 +47,9 @@ The second part of this paper is a summation of Ellingson et. al.'s paper ``Nonp
 \section{Veronese-Whitney embedding}
 1. If $\mathbf{V}$ is a vector space over the commutative field $\mathbb{F}$, then the set of all one dimensional linear subspaces of $\mathbf{V}$ is the \emph{projective space} of $\mathbf{V}$, and is labeled $\mathbf{P(V)}$. If $\mathbf{V} = \mathbb{F}^{d+1}$, the standard notation $P(\mathbb{F}^{d+1}) = \mathbb{F}P^d$ is used. \\[0.2cm]
 2. Let $P(\mathbf{H})$ be the \emph{projective space} corresponding to the Hilbert space $\mathbf{H}$.\\[0.2cm]
-3. We embed $P(\mathbf{H})$ is $\mathcal{L}_{HS} = \mathbf{H} \otimes \mathbf{H}$, the space of Hilbert-Schmidt operators of $\mathbf{H}$ into itself, via the Veronese-Whitney embedding $j$ given by 
+3. We embed $P(\mathbf{H})$ is $\mathcal{L}_{HS} = \mathbf{H} \otimes \mathbf{H}$, the space of Hilbert-Schmidt operators of $\mathbf{H}$ into itself, via the Veronese-Whitney embedding $j$ given by
 \[j([\gamma]) = \frac{1}{||\gamma||^2} \gamma \otimes \gamma\]
-If $||\gamma|| = 1$, this definition can be reformulated as 
+If $||\gamma|| = 1$, this definition can be reformulated as
 \[j([\gamma]) = \gamma \otimes \gamma\]
 Given that $\gamma^*(\beta) = <\beta , \gamma>$, equation above is equivalent to
 \[j([\gamma])(\beta)= <\beta , \gamma> \gamma\]
@@ -58,19 +58,19 @@ Given that $\gamma^*(\beta) = <\beta , \gamma>$, equation above is equivalent to
 Assume $\Gamma$ is a random object in $P(\mathbf{H})$, with $||\Gamma||^2$ finite. The Whitney -Veronese extrinsic mean of $\Gamma$ exists if and only if $E(\frac{1}{||\Gamma||^2}\Gamma \otimes \Gamma)$ has a simple largest eigenvalue, and in this case the extrinsic mean is $\mu_E = [\gamma]$, where $\gamma$ is an eigenvector for this eigenvalue.\\[0.2cm]
 6. If $\gamma_1 \dots \gamma_n$ is a random sample of size $n$ from $\Gamma$, then the extrinsic sample mean $\hat{\mu}_{E,n}$ is the projective point of the eigenvector corresponding to the largest eigenvalue of $\frac{1}{n}\sum_{i=1}^{n}\frac{1}{||\gamma_i||^2}\gamma_i \otimes \gamma_i$ \\[0.2cm]
 7. In order to take the contour shape into consideration, the distance between two parameterized contours are defined as:
-\[d(\gamma_1, \gamma_2) = \text{sup}_s|\kappa_1(s)-\kappa_2(s)|+\text{sup}_s|\gamma_1(s)-\gamma_2(s)|\] 
+\[d(\gamma_1, \gamma_2) = \text{sup}_s|\kappa_1(s)-\kappa_2(s)|+\text{sup}_s|\gamma_1(s)-\gamma_2(s)|\]
 $\kappa_1$ and $\kappa_2$ are the curvatures of $\gamma_1$ and $\gamma_2$ respectively. \\[0.2cm]
 8. Finite representation of planar contours\\[0.2cm]
 We now switch to the finite representation of planar contours where a contour is represented by $k$ landmarks uniformly sampled. The starting point is chosen to be the point furthest from the center of gravity of that contour. \\[0.2cm]
 9. Therefore we need a discrete version of VW embedding. \\[0.2cm]
 missing something here..(insert point 12)\\[0.2cm]
-Bhattacharya and Partrangenaru [8] note that the VW extrinsic mean is the Fr$\acute{e}$chet mean of $[X]$ for the distance $\mathbb{C}P^{k-2}$ induced by the Euclidean distance on $S(k-1, \mathbb{C})$ via $j_1$, given by 
-\[d_{j_1}([\xi_1],[\xi_2]) = ||\xi_1\xi_1^* - \xi_2\xi_2^*|| \text{ (distance definition)}\] 
-Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the space $S(k,\mathbb{C})$ of the selfadjoint $k\times k $ matrices using a similar VW embedding $j$ given by 
+Bhattacharya and Partrangenaru [8] note that the VW extrinsic mean is the Fr$\acute{e}$chet mean of $[X]$ for the distance $\mathbb{C}P^{k-2}$ induced by the Euclidean distance on $S(k-1, \mathbb{C})$ via $j_1$, given by
+\[d_{j_1}([\xi_1],[\xi_2]) = ||\xi_1\xi_1^* - \xi_2\xi_2^*|| \text{ (distance definition)}\]
+Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the space $S(k,\mathbb{C})$ of the selfadjoint $k\times k $ matrices using a similar VW embedding $j$ given by
 \[j([\zeta])= \frac{1}{||\zeta||^2}\zeta\zeta^*\ \text{ (VW embedding discrete version)}\]
 10. To understand it, first note that Kendall's work does not include definition of parameters of location and ?spread of such distributions.[2] Kent definds the full Procrustes estimate of a mean shape $\hat{\mu}$, and shows that for a given sample $[\zeta_1],\dots,[\zeta_n]$ of points on ? $\mathbb{C}P^{k-2}$, this estimate is $\mu = [m]$, where $m$ is a eigenvector corresponding to the largest eigenvalue of $\sum_{i=1}^n\frac{1}{||\zeta_i||^2}\zeta_i\zeta_i^* = \frac{1}{n}\sum_{i=1}^n j([\zeta_i])$, assuming eigenvalue is simple.\\[0.2cm]
 11. For nonparametric definition for similarity shape, there is no definition of mean in Kent. Ziezoid however defines the mean set of a random direct similarity shape $[U]$ of a \emph{k-ads}, regarded as a random point of $\mathbb{C}P^{k-2}$ as the Fr$\acute{e}$chet mean set of $[U]$ with respect to the ?Fubini-Study (FS) metric. \\[0.2cm]
-12. Patrangenaru defines the VW extrinsic mean $\mu_{j1}$ of a random point $[X]$ in terms of the VW embedding $j_1$ of $\mathbb{C}P^{k-2}$ into the space $S(k-1,\mathbb{C})$ of selfadjoint $(k-1) \times (k-1)$ matrices is given by 
+12. Patrangenaru defines the VW extrinsic mean $\mu_{j1}$ of a random point $[X]$ in terms of the VW embedding $j_1$ of $\mathbb{C}P^{k-2}$ into the space $S(k-1,\mathbb{C})$ of selfadjoint $(k-1) \times (k-1)$ matrices is given by
 \[j_1([\xi]) = \frac{1}{||\xi||^2}\xi\xi^*\]
 as projection of the mean of $j_1[X]$ on $j_1(\mathbb{C}P^{k-2})$, and shows that $\mu_{j1}$ exists if $[X]$ the largest eigenvalue of $E(XX^*)$ is simple, and in this case $\mu_{j_1} = [\mu]$, where $\mu$ is an eigenvector corresponding to the largest eigenvalue of $E(XX^*)$ \\[0.2cm]
 13. The two VW embeddings are related by  ?(What is K?)
