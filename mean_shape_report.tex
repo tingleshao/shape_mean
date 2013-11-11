@@ -2,10 +2,17 @@
 % Article Class (This is a LaTeX2e document)  ********************
 % ----------------------------------------------------------------
 \documentclass[12pt]{article}
-\usepackage[english]{babel}
 \usepackage{amsmath,amsthm}
+\usepackage[english]{babel}
 \usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
 \usepackage{hyperref}
+\usepackage{graphicx, subfigure}
+\usepackage{setspace}
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage[all]{hypcap} 
 % THEOREMS -------------------------------------------------------
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
@@ -24,8 +31,8 @@
 
 
 \title{
-%COMP 766 Spring 2013 \\ Project Report %\\
-A Study of the Paper: On the Meaning of Mean Shape: Manifold Stability, Locus and the Two Sample Test}%
+COMP 766 Spring 2013 \\ Project Report \\
+On the Meaning of Mean Shape}%
 \author{Chong Shao}%
 %\address{}%
 %\thanks{}%
@@ -34,69 +41,109 @@ A Study of the Paper: On the Meaning of Mean Shape: Manifold Stability, Locus an
 
 \maketitle
 % ----------------------------------------------------------------
+\begin{abstract}
+This report is a summary of the paper: ``On the Meaning of Mean Shape: Manifold Stability, Locus and the Two Sample Test" [1] published by Stephen Huckemann in 2011. In that paper, the major contribution is the proof of the stable property of two means in a shape space. They are the intrinsic mean and Ziezold mean. This report introduces the concepts of shape spaces and shape means. A discussion of the stability theorem is also included.
+\end{abstract}
 \section{Introduction}
-The first part of this paper discusses Stephen Huckemann's paper ``On the meaning of mean shape" discusses about three kinds of means: Intrinsic mean, extrinsic mean and residue mean. Each has a corresponding quotient mean: Intrinsic, Ziezold and Procrustean mean, respectively. \\[0.2cm]
-One important property that is presented in this paper is the stability of the three means: intrinsic and Ziezold means are stable while Procrustes means are generally not. Here stability means the little perturbation in samples would not make great changes in the population's sample mean. \\[0.2cm]
-The second part of this paper is a summation of Ellingson et. al.'s paper ``Nonparametric Estimation for Extrinsic Mean Shapes of Planar Contours". This paper describes one approach in computing mean for a population of nonparametric representation of 2D planar contours.\\[0.2cm]
-\textbf{Some concepts waiting to be understood: definition of shape space (this is probably OK, see Bredon (1972), Kendall 1999 Chapter 7.3 and Huckemann 2010b), Three means and their names on shape shapes (Kendall 1990, Ziezold 1977, Patragenaru 2005 and xx. see page 2 on Huckemann 2011 paper), sample tests and manifold stability, connections? Horizontal Lifting? how? 1:3 property? why? ``special orthogonal group. def, ok?", ``isometric embedding, def ok?", ``Frechet means, def? ok", ``Lebesgue measure zero, def??ok", page 8 paragraph 1 ``univalent ok", def?, page 9 ``Hausdorff"? \\ What is properly and isometrically? regular?, ok}
-\section{Kendall's shape space}
-\textbf{Definition 1}
-Kendall's shape space is defined as the canonical quotient (understand it in [9])
-\[\Sigma_m^k := S_m^k / SO(m) = \{[x]:x\in S_m^k\} \text{ with the fiber } [x] = \{gx : g \in SO(m)\}\]
-Fiber can be understood as a vector space at a point with reference to its membership in a tangent bundle ( need to restudy this def.)\\[0.2cm]
-Furthermore the reflection can also be filtered out then we have Kendall's reflection shape space
+In a Euclidean space, the concept of a mean is clear and unique. When the concept of mean is generalized to manifolds, there are overwhelming number of definitions of means.[1] This is due to the fact that there exist various definitions of distances on manifolds. Similarity, the definition of a mean on a shape space is also not unique.\\[0.2cm]
+\indent A shape space is defined as the quotient from a manifold with a Lie group. Various types of distances and means can also be defined on a shape space. They have the connections to the means on a manifold. Three types of distances and means are introduced in this report. \\[0.2cm]
+\indent There are particular interests in one type of shape space, namely Kendall's shape space. It is also introduced in this report. After that, three types of means on Kendall's shape space are introduced. \\[0.2cm]
+\indent After the concept of means on a shape space has been built, people can discuss about the certain property of various types of means. One important property of means is the stability property. In a statistical 2-sample test or a multi-sample test, stable means are preferred. Here stability can be understood in a way that a little perturbation in samples would not make great changes in the sample mean. Among three types of means on a shape space introduced in this paper, we are interested in the problem that which of them are stable. The answer is that the intrinsic means and Ziezold means are stable. The proof is given in Huckemann's paper [1]. \\[0.2cm]
+\indent One technique is used in the proof of the stability theorem of the two types of means. The technique is called ``horizontal lifting" is briefly discussed. [1] It can be understand as lifting a random variable from shape space to manifold and make the Riemannian integration possible. This is the key in proving the stability theorem using counter proof. \\[0.2cm]
+\indent One important result in this paper is the proof of the stability of the two means: the intrinsic and Ziezold means are stable while Procrustes means are generally not.\\[0.2cm]
+\indent This report is organized as follows. Chapter 2 discusses the concept of a shape space. Chapter 3 introduces Kendall's shape space which is a particular type of shape space. Chapter 4 presents the definitions of means on manifolds, shape spaces, and a Kendall's shape space. Chapter 5 gives an insight of the method used in proving the stable theorem for two types of means. Chapter 6 concludes the report.
+\section{Shape Space}
+In Huckemann's paper [1], a shape space is defined as a quotient of a Riemannian manifold with a Lie Group. This is due to the fact that the transitions between shapes are continuous and smooth. We also would like to have the definition of the distances between any two shapes. So that it is natural to model the space of shapes as a Riemannian manifold and the transitions as a Lie Group. \\[0.2cm]
+\indent The formal definition of a shape space is the follows [1]:\\[0.2cm]
+\indent A complete connected finite-dimensional Riemannian manifold $M$ with the geodesic distance $d_M$ on which a Lie group $G$ acts properly and isometrically from the left is called a pre-shape space. Moreover the canonical quotient $\pi: M \rightarrow Q := M / G = {[p]: p\in M}$ with the orbit $[p] = {gp: g \in G}$ is called a shape space.\\[0.2cm]
+\indent Moreover we have the notion of manifold part of s shape space: [Bredon 1972] \\[0.2cm]
+\indent If there is an open and dense submanifold $M^\ast$ of $M$ such that the quotient $Q^\ast=M^\ast / G$ restricted to $M^\ast$ carries a manifold structure also open and dense in $Q$. Then the elements in $M^\ast$ and $Q^\ast$ are called regular. The complementary elements are singular. $Q^\ast$ is the manifold part of $Q$.\\[0.2cm]
+\indent The idea of manifold part is important in the proof the stability theorem in Huckemann's paper [1].
+\section{Kendall's Shape Space}
+As one type of shape spaces, Kendall's shape space is used in the case that only similarity between shapes is in concern. The information about centering, scaling and rotation are discarded. The definition of Kendall's shape space and an illustration is given in this chapter.\\[0.2cm]
+\indent The definition of Kendall's shape spaces starts with a sampling of landmarks at specific locations of an object. Then after the process of centering, filtering out zero, scaling and filtering out rotations, we reach the definition of Kendall's shape space.\\[0.2cm]
+\indent Let's start with an example of shapes on 2D planar contours [4]: 
+\begin{figure}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{Picture1.png}
+    \caption{The landmarks are taken from 2D planar contours describing shapes of hands}
+\end{center}
+\end{figure}
+\indent A shape can be described by taking $k$ landmarks as data vector. Each vector has dimension $m$. We place the vectors into a $m\times k$ matrix $M$. \\[0.2cm]
+In order to filter out the translation, centering should be done. Centering is done by multiplying a sub-Helmert matrix $\mathcal{H}$ from the right. Then the result has dimension $m \times (k-1)$. \\[0.2cm]
+\indent We also would like the excluding the case that all configuration with all landmarks coinciding. This is done by exclude zero from the space.
+\[F_m^k := M(m, k-1) \setminus \{0\}\]
+\indent We are only interested in the similarity between two shapes. Thus we would like to scale all the configurations so that the data are contained in the unit sphere.
+\[S_m^k := \{x\in F_m^k: ||x|| = 1\}\]
+\indent $S_m^k$ is called pre-shape sphere.\\[0.2cm]
+\indent Finally we want to filter out the actions such as rotations. This involves the notion of orthogonal group and special orthogonal group.\\[0.2cm]
+\indent Orthogonal group is a group containing matrices with columns orthogonal to each other. Such type of matrices represents transforms that preserves distance. We denote a orthogonal group with dimension $m$ by $O(m) := \{g \in M(m,m): g^Tg = e\}.$ Special orthogonal group is the subset of orthogonal group that represents rotations. It is written as $SO(m) := \{g \in O(m): det(g) = 1\}$.\\[0.2cm]
+\indent Having a special orthogonal group $SO(m)$ defined, we define the Kendall's shape space to be the quotient:
+\[\Sigma_m^k := S_m^k / SO(m) = \{[x]:x\in S_m^k\} \text{ with the orbit} [x] = \{gx : g \in SO(m)\}\]
+\indent Furthermore the reflection can also be filtered out then we have Kendall's reflection shape space
 \[R\Sigma_m^k := \Sigma_m^k / \{e,\hat{e}\} = S_m^k / O(m)\]
-$O(m)$ denotes the orthogonal group with the unit matrix $e = diag(1,\dots,1)\text{, } \hat{e} = diag(-1, 1, \dots, 1) \text{ and } SO(m) = {g \in O(m): det(g) = 1}$ is the special orthogonal group.
+\indent Having the spaces well defined, the definition of distances and means become possible. The next chapter discusses the distances and means on a shape space.
 \section{Definition of means}
-Three kinds of means are mentioned: intrinsic means, extrinsic means and residual means. These means are defined on Remannian manifolds. And there are also three corresponding means on shape spaces. Where they are named intrinsic means on shape spaces, Ziezold means and Procrustes means.
+There are a great variety of means that can be defined on a shape space. Huckemann's paper focuses on three of them [1]. They are intrinsic means, Ziezold means and Procrustes means. In order to discuss about them, three corresponding means on a Riemannian manifold are introduced first. They are intrinsic means, extrinsic means and residual means. The definition of these three means are given as follows.\\[0.2cm]
+Intrinsic mean:\\[0.2cm]
+The intrinsic mean corresponds to the geodesic distance $\rho^{(i)}$ on the Riemannian manifold, as follows. 
+\[E^{\rho^{(i)}}(X)=argmin_{\mu\in M}\mathbb{E}(\rho^{(i)}(X,\mu)^2)\]
+$\rho^{(i)}$ denotes the geodesic distance.\\[0.2cm]
+\indent Both the definition of extrinsic mean and the definition of residual mean involves concept of embedding. Here the embedding is a process to embed a manifold in to an ambient Euclidean space $R^D$. The embedding makes the definition of extrinsic and residual distance possible at the ambient space.\\[0.2cm]
+Extrinsic mean:\\[0.2cm]
+The extrinsic metric $\rho^{(e)}$ is due to an embedding of a Riemannian manifold in an ambient Euclidean space, as follows.\\[0.2cm]
+Let $Q = M \subset R^D$ be a Riemannian manifold embedded in a Euclidean space $R^D$\\
+Let $\Phi: R^D \rightarrow M$  be the orthogonal projection, $\Phi(x) = argmin_{p\in M}||x-p||$ \\ [0.2cm]
+Then the extrinsic mean is given by the image $\Phi(E(Y))$, $Y$ denotes $X$ viewed as taking values in $R^D$.
+\[E^{\rho^{(e)}}(X)=argmin_{\mu\in M}\mathbb{E}(\rho^{(e)}(X,\mu)^2)\]
+Residual mean:\\[0.2cm]
+The residual mean is the one that corresponds to the residual metric. The residual metric is defined as follows.\\[0.2cm]
+$\rho^{(r)}(p,p')=||d\Phi_(p')(p-p')||,(p,p'\in M)$.\\[0.2cm]
+\indent Note that the residual metric is not symmetric. It does not satisfy the triangle inequality in general. \\[0.2cm]
+\indent In the above definition, $d\Phi_{p'}$ can be understand as the derivative of $\Phi_{p'}$ mentioned in the definition of the extrinsic mean. $d\Phi_{p'}$ at $p'$ yielding the orthogonal projection to the embedded tangent space:
+\[T_{p'}R^D \rightarrow T_{p'}M \subset R^D\]
+Following the definition of $\rho^{(r)}$, we have the definition of the residual mean:
+\[E^{\rho^{(r)}}(X)=argmin_{\mu\in M}\mathbb{E}(\rho^{(r)}(X,\mu)^2)\]
+\indent Recall the definition of a shape space in Chapter 2, a shape space is the canonical quotient $\pi: M \rightarrow Q := M / G = {[p]: p\in M}$ with the orbit $[p] = {gp: g \in G}$. For the means living on a Riemannian manifold $M$, we can similarly define the means living on a canonical quotient. This involves the concept of optimal position. The definitions of three distances and corresponding shape means and the concept of optimal position are introduced in the remaining of this chapter.\\[0.2cm]
+\indent The definition of distances on the shape space are: \\[0.2cm]
+intrinsic distance:
+\[d_Q([p],[p']):= min_{g\in G}d_M(gp,p')=min_{g\in G}d_M(gp,hp')\]
+Ziezold distance:
+\[\rho^z_Q([p],[p']):=min_g\in G||gp-p'||\]
+\begin{figure}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{Picture2.png}
+    \caption{Three means for black points distribute partially uniformly on the equator and partially concentrates at the north pole. Blue squares indicate the residual means. Red square indicates the extrinsic mean. Magenta square indicates the intrinsic mean. The axis on the right shows the corresponding quotient configuration.}
+\end{center}
+\end{figure}
+Procrustes distance:
+\[\rho^z_Q([p],[p']):=min_{g\in G, gp in opt.pos. to p'}||d\Phi_{p'}(gp-p')||\]
+\indent These distance definitions are similar to the ones on a manifold, expect that it finds a $g$ in the Lie Group $G$ to minimize the distance between two points. This can be understood in a way that two points on a manifold can be considered as the same point in a quotient space if one can be transformed to another by some transformation $g\in G$.\\[0.2cm]
+Finally we have the definitions for three shape means:
+\[\text{intrinsic means}\,\,\, E^{(\rho^{(i)})}([X]) = argmin_{[\mu]\in Q}\mathbb{E}(\rho^{(i)}([X],[\mu]))\]
+\[\text{Ziezold means}\,\,\, E^{(\rho^{(z)})}([X]) = argmin_{[\mu]\in Q}\mathbb{E}(\rho^{(z)}([X],[\mu]))\]
+\[\text{Procrustes means}\,\,\, E^{(\rho^{(p)})}([X]) = argmin_{[\mu]\in Q}\mathbb{E}(\rho^{(p)}([X],[\mu]))\]
+Moreover, on a Kendall's shape space, these three types of means have the following particular distance definitions:
+\[\text{intrinsic distance}\,\,\, \rho^{(i)}(x,x') = min_{g\in G}arccos(gx,x')\]
+\[\text{Ziezold distance}\,\,\, \rho^{(z)}(x,x') = min_{g\in G}\sqrt{2-2\langle gx,x'\rangle}\]
+\[\text{Procrustes distance}\,\,\, \rho^{(p)}(x,x') = min_{g\in G, \langle gx,x'\rangle \geq 0}\sqrt{1-\langle gx,x'\rangle^2}\]
 \section{Proof of stability}
+The richness of the family of means on manifolds and shape spaces brings flexibility in doing statistical analysis on population of shapes. But it also brings problem for us to decide which mean to use in a certain condition.\\[0.2cm]
+\indent The major contribution in Huckemann (2011) [1] is the proof of the stability theorem for two means on the shape space. In the context of shape spaces, a mean is stable if and only if the mean is regular when then population is regular. The definition of regular given in the previous sections. In this paper, the intrinsic mean and the Ziezold mean are shown to be stable. The proof of the instability of a Procrustes mean is not given. But an example illustrating the instability of a Procrustes mean is shown in the paper.\\[0.2cm]
+\indent One technique used in proving the stability property of intrinsic means and Ziezold means is named ``horizontal lifting". The idea is to lift a neighborhood $Q^{[p]} \cup A$ in optimal position to $p \in M$ to $L$. $L$ is called the horizontal lift. $[p]$ is the intrinsic mean or the Ziezold mean of a random variable $X$ on the quotient space. $p$ is the intrinsic mean or the extrinsic mean of a random variable $Y$ on the manifold. By using the horizontal lifting, the proof of any $p'$s in $Q^{([p])}$ is of lower orbit type than $p$ becomes possible. This proof uses counter proof approach. By proving that any $p'$s in $Q^{([p])}$ is of lower orbit type than $p$, a corollary can be made that [p] is regular. This yields the result that intrinsic means and Ziezold means are stable. The next subsection gives an insight into the idea of Horizontal Lifting. And the subsection after that formally states the theorem of manifold stability.
 \subsection*{Horizontal Lifting}
+The idea of horizontal lifting is related to the slice theorem. The big picture is that horizontal lifting is a technique to lift a random variable $X$ to $Y$ in optimal position to $p$, to establish the connection of mean $[p]$ in $X$ and $p$ in $Y$, so that the proof of any $p'$ is lower orbit than $p$ is possible. Then we have the result that $[p]$ is regular.
 \subsection*{Theorem of Manifold Stability}
-\subsection*{Proof}
-\section{1:3 Property}
-\section{Extrinsic mean shapes of planar contours}
-\section{Veronese-Whitney embedding}
-1. If $\mathbf{V}$ is a vector space over the commutative field $\mathbb{F}$, then the set of all one dimensional linear subspaces of $\mathbf{V}$ is the \emph{projective space} of $\mathbf{V}$, and is labeled $\mathbf{P(V)}$. If $\mathbf{V} = \mathbb{F}^{d+1}$, the standard notation $P(\mathbb{F}^{d+1}) = \mathbb{F}P^d$ is used. \\[0.2cm]
-2. Let $P(\mathbf{H})$ be the \emph{projective space} corresponding to the Hilbert space $\mathbf{H}$.\\[0.2cm]
-3. We embed $P(\mathbf{H})$ is $\mathcal{L}_{HS} = \mathbf{H} \otimes \mathbf{H}$, the space of Hilbert-Schmidt operators of $\mathbf{H}$ into itself, via the Veronese-Whitney embedding $j$ given by
-\[j([\gamma]) = \frac{1}{||\gamma||^2} \gamma \otimes \gamma\]
-If $||\gamma|| = 1$, this definition can be reformulated as
-\[j([\gamma]) = \gamma \otimes \gamma\]
-Given that $\gamma^*(\beta) = <\beta , \gamma>$, equation above is equivalent to
-\[j([\gamma])(\beta)= <\beta , \gamma> \gamma\]
-4?. The \emph{range of this embedding} is the submanifold $\mathcal{M}_1$ of rank one Hilbert-Schmidt operators of $\mathbf{H}$.  $P(\mathbf{H})$ is a Hilbert manifold which is embedded in the Hilbert space $\mathcal{L}_{HS}$, for any probability measure $Q$ on a Hilbert manifold $M$ embedded in a Hilbert space, the extrinsic mean of Q w.r.t. that embedding can be defined. \\[0.2cm]
-5. \textbf{Def. of mean} \\[0.2cm]
-Assume $\Gamma$ is a random object in $P(\mathbf{H})$, with $||\Gamma||^2$ finite. The Whitney -Veronese extrinsic mean of $\Gamma$ exists if and only if $E(\frac{1}{||\Gamma||^2}\Gamma \otimes \Gamma)$ has a simple largest eigenvalue, and in this case the extrinsic mean is $\mu_E = [\gamma]$, where $\gamma$ is an eigenvector for this eigenvalue.\\[0.2cm]
-6. If $\gamma_1 \dots \gamma_n$ is a random sample of size $n$ from $\Gamma$, then the extrinsic sample mean $\hat{\mu}_{E,n}$ is the projective point of the eigenvector corresponding to the largest eigenvalue of $\frac{1}{n}\sum_{i=1}^{n}\frac{1}{||\gamma_i||^2}\gamma_i \otimes \gamma_i$ \\[0.2cm]
-7. In order to take the contour shape into consideration, the distance between two parameterized contours are defined as:
-\[d(\gamma_1, \gamma_2) = \text{sup}_s|\kappa_1(s)-\kappa_2(s)|+\text{sup}_s|\gamma_1(s)-\gamma_2(s)|\]
-$\kappa_1$ and $\kappa_2$ are the curvatures of $\gamma_1$ and $\gamma_2$ respectively. \\[0.2cm]
-8. Finite representation of planar contours\\[0.2cm]
-We now switch to the finite representation of planar contours where a contour is represented by $k$ landmarks uniformly sampled. The starting point is chosen to be the point furthest from the center of gravity of that contour. \\[0.2cm]
-9. Therefore we need a discrete version of VW embedding. \\[0.2cm]
-missing something here..(insert point 12)\\[0.2cm]
-Bhattacharya and Partrangenaru [8] note that the VW extrinsic mean is the Fr$\acute{e}$chet mean of $[X]$ for the distance $\mathbb{C}P^{k-2}$ induced by the Euclidean distance on $S(k-1, \mathbb{C})$ via $j_1$, given by
-\[d_{j_1}([\xi_1],[\xi_2]) = ||\xi_1\xi_1^* - \xi_2\xi_2^*|| \text{ (distance definition)}\]
-Then the shape space $\Sigma_2^k = \mathbb{P}(L_k^2)$ can be embedded into the space $S(k,\mathbb{C})$ of the selfadjoint $k\times k $ matrices using a similar VW embedding $j$ given by
-\[j([\zeta])= \frac{1}{||\zeta||^2}\zeta\zeta^*\ \text{ (VW embedding discrete version)}\]
-10. To understand it, first note that Kendall's work does not include definition of parameters of location and ?spread of such distributions.[2] Kent definds the full Procrustes estimate of a mean shape $\hat{\mu}$, and shows that for a given sample $[\zeta_1],\dots,[\zeta_n]$ of points on ? $\mathbb{C}P^{k-2}$, this estimate is $\mu = [m]$, where $m$ is a eigenvector corresponding to the largest eigenvalue of $\sum_{i=1}^n\frac{1}{||\zeta_i||^2}\zeta_i\zeta_i^* = \frac{1}{n}\sum_{i=1}^n j([\zeta_i])$, assuming eigenvalue is simple.\\[0.2cm]
-11. For nonparametric definition for similarity shape, there is no definition of mean in Kent. Ziezoid however defines the mean set of a random direct similarity shape $[U]$ of a \emph{k-ads}, regarded as a random point of $\mathbb{C}P^{k-2}$ as the Fr$\acute{e}$chet mean set of $[U]$ with respect to the ?Fubini-Study (FS) metric. \\[0.2cm]
-12. Patrangenaru defines the VW extrinsic mean $\mu_{j1}$ of a random point $[X]$ in terms of the VW embedding $j_1$ of $\mathbb{C}P^{k-2}$ into the space $S(k-1,\mathbb{C})$ of selfadjoint $(k-1) \times (k-1)$ matrices is given by
-\[j_1([\xi]) = \frac{1}{||\xi||^2}\xi\xi^*\]
-as projection of the mean of $j_1[X]$ on $j_1(\mathbb{C}P^{k-2})$, and shows that $\mu_{j1}$ exists if $[X]$ the largest eigenvalue of $E(XX^*)$ is simple, and in this case $\mu_{j_1} = [\mu]$, where $\mu$ is an eigenvector corresponding to the largest eigenvalue of $E(XX^*)$ \\[0.2cm]
-13. The two VW embeddings are related by  ?(What is K?)
-\[j_1([\xi]) = Kj([\zeta])K^T\]
-\section{Experiments}
+Here we restate the theorem of manifold stability in [1]:\\[0.2cm]
+\indent Suppose that $X$ is a random shape on $Q$ that is supported by $Q \setminus C^{quot}([p])$ for some $[p] \in Q$ assuming the manifold part $Q^\ast$ with non-zero probability and having at most countably many point masses on the singular part, Then $[p]$ is regular if it is an intrinsic mean of $X$, or if it is a Ziezold mean, optimal positioning is invariant and (1) is valid.\\[0.2cm]
+\indent In view of the extrinsic distance let $f_{ext}^{p'}: M \setminus C(p') \rightarrow [0,\inf) be defined by f_{ext}^{p'} = ||p-p'||^2=||p-exp_p(exp_p^{-1}p')||^2$. We introduce the following condition:
+\[df_{ext}^{p_1}(p)=df_{ext}^{p_2}(p)\leftrightarrow p_1 = p_2\,\,\,(1)\]
+\section{Conclusion}
+In Huckemann's "on the meaning mean shape" paper, the stability of intrinsic means and extrinsic means are proved. As a consequence, these two types of means may be applied in 2-sample tests or multi-sample tests. In the computational point of view, Ziezold may be preferred since it only involves computing Euclidean distances and a projection. \\[0.2cm]
+\indent The research of the notion of means on shape spaces is moving forward. Dryden published an interesting result that describes a huge family of means and the properties of them [2]. This can be considered as a generalization to Stephen's work.
 \section{References}
-[1] Stephen Huckemann, ``On the Meaning of Mean Shape" \\[0.2cm]
-[2] Contour shape mean paper\\[0.2cm]
-[3] Hilbert Schmidt operator \href{http://en.wikipedia.org/wiki/Hilbert\%E2\%80\%93Schmidt_operator}{link}\\[0.2cm]
-[4] Veronese surface \href{http://en.wikipedia.org/wiki/Veronese_surface}{link}\\[0.2cm]
-[5] Whitney embedding theorem \href{http://en.wikipedia.org/wiki/Whitney_embedding_theorem}{link}\\[0.2cm]
-[6] The Statistics of shapes book on Steve's shelf\\[0.2cm]
-[7] Contour shape mean paper 2013 version \\[0.2cm]
-[8] ref [9] on paper [2] \\[0.2cm]
-[9] UCLA Quotient of Vector Spaces Tutorial  \\[0.2cm]
-http://www.math.ucla.edu/~pskoufra/M115A-QuotientOfVectorSpaces.pdf\\[0.2cm]
-[10] Stephen Huckemann, ``On the Meaning of Mean Shape: Manifold Stability, Locus and the Two Sample Test", 2011 \\ 
+[1] Stephen Huckemann, ``On the Meaning of Mean Shape: Manifold Stability, Locus and the Two Sample Test", 2011\\[0.2cm]
+[2] Ian L. Dryden, ``Mean shapes, projections and intrinsic limiting distributions", Journal of Statistical Planning and Inference, 2013\\[0.2cm]
+[3] Stephen Huckemann, ``Manifold stability and the central limit theorem for mean shape", Proceedings of the 30th Leeds Annual Statistical Research Workshop 5th-7th July, 2011\\[0.2cm]
+[4] Leif Ellingson, Vic Patrangenaru, Frits Ruymgaart, ``Nonparametric Estimation of Means on Hilbert Manifolds and Extrinsic Analysis of Mean Shapes of Contours", arXiv, 2013\\[0.2cm]
 \end{document}
